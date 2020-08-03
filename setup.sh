@@ -75,8 +75,7 @@ wget -O ~/.oh-my-zsh/themes/node.zsh-theme https://raw.githubusercontent.com/sku
 sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="agnoster"/g' ~/.zshrc
 
 echo 'installing slack'
-wget https://downloads.slack-edge.com/linux_releases/slack-desktop-3.3.8-amd64.deb
-sudo apt install ./slack-desktop-*.deb -y
+sudo snap install slack --classic
 
 echo 'installing guake'
 sudo apt-get update
@@ -117,3 +116,9 @@ echo 'ckb-next'
 git clone https://github.com/ckb-next/ckb-next.git
 cd ckb-next
 ./quickinstall
+
+echo 'installing postman'
+sudo snap install postman
+
+echo 'FFmpeg to convert videos'
+sudo snap install ffmpeg

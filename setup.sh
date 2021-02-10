@@ -19,11 +19,6 @@ cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
 echo 'enabling workspaces for both screens'
 gsettings set org.gnome.mutter workspaces-only-on-primary false
 
-echo 'installing zsh'
-sudo apt-get install zsh -y
-sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-chsh -s /bin/zsh
-
 # Don't forget to insert shortcut "flameshot gui"
 echo 'installing flameshot'
 sudo apt install flameshot -y
@@ -52,28 +47,6 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 echo 'installing nvm'
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
-echo 'export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.zshrc
-
-source ~/.zshrc
-nvm --version
-nvm install 12
-nvm alias default 12
-node --version
-npm --version
-
-echo 'installing autosuggestions'
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-source ~/.zshrc
-
-echo 'installing theme'
-sudo apt install fonts-firacode -y
-sudo apt-get install fonts-powerline -y
-wget -O ~/.oh-my-zsh/themes/node.zsh-theme https://raw.githubusercontent.com/skuridin/oh-my-zsh-node-theme/master/node.zsh-theme 
-sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="agnoster"/g' ~/.zshrc
-
 echo 'installing slack'
 sudo snap install slack --classic
 
@@ -96,18 +69,13 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
-echo 'installing teamviewer'
-wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
-sudo apt install -y ./teamviewer_amd64.deb
-
 echo 'installing dbeaver'
 wget -c https://dbeaver.io/files/6.0.0/dbeaver-ce_6.0.0_amd64.deb
 sudo dpkg -i dbeaver-ce_6.0.0_amd64.deb
 sudo apt-get install -y
 
-echo 'installing pgsql'
-sudo apt update
-sudo apt install postgresql postgresql-contrib -y
+echo 'installing postman'
+sudo snap install postman
 
 echo 'installing ckb-next'
 echo 'required packages'
@@ -115,10 +83,31 @@ sudo apt install build-essential cmake libudev-dev qt5-default zlib1g-dev libapp
 echo 'ckb-next'
 git clone https://github.com/ckb-next/ckb-next.git
 cd ckb-next
-./quickinstall
+source quickinstall
 
-echo 'installing postman'
-sudo snap install postman
+echo 'installing zsh'
+sudo apt-get install zsh -y
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+chsh -s /bin/zsh
 
-echo 'FFmpeg to convert videos'
-sudo snap install ffmpeg
+echo 'export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.zshrc
+
+source ~/.zshrc
+nvm --version
+nvm install 12
+nvm alias default 12
+node --version
+npm --version
+
+echo 'installing autosuggestions'
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+source ~/.zshrc
+
+echo 'installing theme'
+sudo apt install fonts-firacode -y
+sudo apt-get install fonts-powerline -y
+wget -O ~/.oh-my-zsh/themes/node.zsh-theme https://raw.githubusercontent.com/skuridin/oh-my-zsh-node-theme/master/node.zsh-theme 
+sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="agnoster"/g' ~/.zshrc

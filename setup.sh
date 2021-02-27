@@ -23,6 +23,9 @@ gsettings set org.gnome.mutter workspaces-only-on-primary false
 echo 'installing flameshot'
 sudo apt install flameshot -y
 
+echo 'htop'
+sudo apt install htop -y
+
 echo 'installing vim'
 sudo apt install vim -y
 
@@ -32,7 +35,7 @@ sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt-get install apt-transport-https -y
 sudo apt-get update
-sudo apt-get install code -y # or code-insiders
+sudo apt-get install code -y
 
 echo 'installing extensions'
 code --install-extension Shan.code-settings-sync
@@ -77,14 +80,6 @@ sudo apt-get install -y
 echo 'installing postman'
 sudo snap install postman
 
-echo 'installing ckb-next'
-echo 'required packages'
-sudo apt install build-essential cmake libudev-dev qt5-default zlib1g-dev libappindicator-dev libpulse-dev libquazip5-dev libqt5x11extras5-dev libxcb-screensaver0-dev libxcb-ewmh-dev libxcb1-dev qttools5-dev git -y
-echo 'ckb-next'
-git clone https://github.com/ckb-next/ckb-next.git
-cd ckb-next
-source quickinstall
-
 echo 'installing zsh'
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -111,3 +106,11 @@ sudo apt install fonts-firacode -y
 sudo apt-get install fonts-powerline -y
 wget -O ~/.oh-my-zsh/themes/node.zsh-theme https://raw.githubusercontent.com/skuridin/oh-my-zsh-node-theme/master/node.zsh-theme 
 sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="agnoster"/g' ~/.zshrc
+
+echo 'installing ckb-next'
+echo 'required packages'
+sudo apt install build-essential cmake libudev-dev qt5-default zlib1g-dev libpulse-dev libquazip5-dev libqt5x11extras5-dev libxcb-screensaver0-dev libxcb-ewmh-dev libxcb1-dev qttools5-dev git libdbusmenu-qt5-dev -y
+echo 'ckb-next'
+git clone https://github.com/ckb-next/ckb-next.git
+cd ckb-next
+source quickinstall

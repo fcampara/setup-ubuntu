@@ -50,8 +50,9 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 echo 'installing nvm'
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
-echo 'installing slack'
-sudo snap install slack --classic
+# Now is used franz
+# echo 'installing slack'
+# sudo snap install slack --classic
 
 echo 'installing guake'
 sudo apt-get update
@@ -102,6 +103,14 @@ nvm install 12
 nvm alias default 12
 node --version
 npm --version
+
+echo 'installing yarn'
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn -y
+yarn --version
+
 
 echo 'installing autosuggestions'
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions

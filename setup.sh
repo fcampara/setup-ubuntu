@@ -56,12 +56,14 @@ sudo snap install slack --classic
 echo 'installing guake'
 sudo apt-get update
 sudo apt-get install guake -y
+sudo ln -s /usr/share/applications/guake.desktop /etc/xdg/autostart/
 
 echo 'installing docker'
 sudo apt-get remove docker docker-engine docker.io
 sudo apt install docker.io -y
 sudo systemctl start docker
 sudo systemctl enable docker
+sudo usermod -aG docker $USER
 docker --version
 
 chmod 777 /var/run/docker.sock
@@ -76,6 +78,11 @@ echo 'installing dbeaver'
 wget -c https://dbeaver.io/files/6.0.0/dbeaver-ce_6.0.0_amd64.deb
 sudo dpkg -i dbeaver-ce_6.0.0_amd64.deb
 sudo apt-get install -y
+
+echo 'installing meet franz'
+wget https://github.com/meetfranz/franz/releases/download/v5.6.1/franz_5.6.1_amd64.deb -O franz.deb
+sudo dpkg -i franz.deb
+sudo apt-get install -y -f
 
 echo 'installing postman'
 sudo snap install postman

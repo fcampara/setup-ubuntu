@@ -19,9 +19,6 @@ ssh-keygen -t rsa -b 4096 -C $GIT_CONFIG_USER_EMAIL
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
 
-echo 'enabling workspaces for both screens'
-gsettings set org.gnome.mutter workspaces-only-on-primary false
-
 # Don't forget to insert shortcut "flameshot gui"
 echo 'installing flameshot'
 sudo apt install flameshot -y

@@ -1,3 +1,6 @@
+GIT_CONFIG_USER_NAME='Felipe Campara'
+GIT_CONFIG_USER_EMAIL='fcamparasilva@gmail.com'
+
 sudo apt-get update
 
 echo 'installing curl'
@@ -7,12 +10,12 @@ echo 'installing git'
 sudo apt install git -y
 
 echo 'config git'
-git config --global user.name Felipe Campara
-git config --global user.email fcamparasilva@gmail.com
+git config --global user.name $GIT_USER_NAME
+git config --global user.email $GIT_CONFIG_USER_EMAIL
 git config --global core.editor vim
 
 echo "Generating a SSH Key"
-ssh-keygen -t rsa -b 4096 -C $git_config_user_email
+ssh-keygen -t rsa -b 4096 -C $GIT_CONFIG_USER_EMAIL
 ssh-add ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub | xclip -selection clipboard
 

@@ -80,6 +80,10 @@ wget -c https://dbeaver.io/files/6.0.0/dbeaver-ce_6.0.0_amd64.deb
 sudo dpkg -i dbeaver-ce_6.0.0_amd64.deb
 sudo apt-get install -y
 
+echo 'installing MongoDB Compass'
+wget https://downloads.mongodb.com/compass/mongodb-compass_1.26.0_amd64.deb
+sudo dpkg -i mongodb-compass_1.26.0_amd64.deb
+
 echo 'installing meet franz'
 wget https://github.com/meetfranz/franz/releases/download/v5.6.1/franz_5.6.1_amd64.deb -O franz.deb
 sudo dpkg -i franz.deb

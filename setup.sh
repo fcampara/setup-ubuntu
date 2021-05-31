@@ -92,6 +92,9 @@ sudo apt-get install -y -f
 echo 'installing postman'
 sudo snap install postman
 
+echo 'installing jq'
+sudo apt-get install jq
+
 echo 'installing zsh'
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"

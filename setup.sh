@@ -9,6 +9,12 @@ sudo apt install curl -y
 echo 'installing git'
 sudo apt install git -y
 
+echo 'installing vim'
+sudo apt install vim -y
+
+echo "install xclip"
+sudo apt install xclip -y
+
 echo 'config git'
 git config --global user.name $GIT_USER_NAME
 git config --global user.email $GIT_CONFIG_USER_EMAIL
@@ -25,9 +31,6 @@ sudo apt install flameshot -y
 
 echo 'htop'
 sudo apt install htop -y
-
-echo 'installing vim'
-sudo apt install vim -y
 
 echo 'installing code'
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
@@ -50,9 +53,8 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 echo 'installing nvm'
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
-# Now is used franz
-# echo 'installing slack'
-# sudo snap install slack --classic
+echo 'installing slack'
+sudo snap install slack --classic
 
 echo 'installing guake'
 sudo apt-get update
@@ -76,18 +78,9 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 
 echo 'installing dbeaver'
-wget -c https://dbeaver.io/files/6.0.0/dbeaver-ce_6.0.0_amd64.deb
-sudo dpkg -i dbeaver-ce_6.0.0_amd64.deb
+wget -c https://dbeaver.io/files/22.2.2/dbeaver-ce_22.2.2_amd64.deb
+sudo dpkg -i dbeaver-ce_22.2.2_amd64.deb
 sudo apt-get install -y
-
-echo 'installing MongoDB Compass'
-wget https://downloads.mongodb.com/compass/mongodb-compass_1.26.0_amd64.deb
-sudo dpkg -i mongodb-compass_1.26.0_amd64.deb
-
-echo 'installing meet franz'
-wget https://github.com/meetfranz/franz/releases/download/v5.6.1/franz_5.6.1_amd64.deb -O franz.deb
-sudo dpkg -i franz.deb
-sudo apt-get install -y -f
 
 echo 'installing postman'
 sudo snap install postman
@@ -117,7 +110,6 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update
 sudo apt install yarn -y
 yarn --version
-
 
 echo 'installing autosuggestions'
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions

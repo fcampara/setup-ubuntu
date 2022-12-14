@@ -43,9 +43,6 @@ sudo apt-get install code -y
 echo 'installing extensions'
 code --install-extension Shan.code-settings-sync
 
-echo 'installing spotify'
-snap install spotify
-
 echo 'installing chrome'
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -56,6 +53,13 @@ wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 echo 'installing slack'
 sudo snap install slack --classic
 
+echo 'installing teams'
+sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-archive-keyring.gpg
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/ms-teams stable main" > /etc/apt/sources.list.d/teams.list'
+sudo apt-get update
+sudo apt-get install teams -y
+
+# Don't forgot add in startup application (/usr/bin/guake)
 echo 'installing guake'
 sudo apt-get update
 sudo apt-get install guake -y
@@ -82,13 +86,16 @@ wget -c https://dbeaver.io/files/22.2.2/dbeaver-ce_22.2.2_amd64.deb
 sudo dpkg -i dbeaver-ce_22.2.2_amd64.deb
 sudo apt-get install -y
 
+echo 'installing VPN'
+sudo apt-get install openconnect network-manager-openconnect network-manager-openconnect-gnome -y
+
 echo 'installing postman'
 sudo snap install postman
 
 echo 'installing jq'
 sudo apt-get install jq
 
-echo 'installing zsh'
+echo '----- installing zsh -----'
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 chsh -s /bin/zsh
@@ -98,18 +105,18 @@ echo 'export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.zshrc
 
 source ~/.zshrc
-nvm --version
-nvm install 12
-nvm alias default 12
-node --version
-npm --version
+nvm install 14
+nvm alias default 14
 
 echo 'installing yarn'
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update
 sudo apt install yarn -y
-yarn --version
+
+echo 'installing pnpm'
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+source ~/.zshrc
 
 echo 'installing autosuggestions'
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
@@ -122,10 +129,11 @@ sudo apt-get install fonts-powerline -y
 wget -O ~/.oh-my-zsh/themes/node.zsh-theme https://raw.githubusercontent.com/skuridin/oh-my-zsh-node-theme/master/node.zsh-theme 
 sed -i 's/.*ZSH_THEME=.*/ZSH_THEME="agnoster"/g' ~/.zshrc
 
-echo 'installing ckb-next'
-echo 'required packages'
-sudo apt install build-essential cmake libudev-dev qt5-default zlib1g-dev libpulse-dev libquazip5-dev libqt5x11extras5-dev libxcb-screensaver0-dev libxcb-ewmh-dev libxcb1-dev qttools5-dev git libdbusmenu-qt5-dev -y
-echo 'ckb-next'
-git clone https://github.com/ckb-next/ckb-next.git
-cd ckb-next
-source quickinstall
+# Deprecated
+# echo 'installing ckb-next'
+# echo 'required packages'
+# sudo apt install build-essential cmake libudev-dev qt5-default zlib1g-dev libpulse-dev libquazip5-dev libqt5x11extras5-dev libxcb-screensaver0-dev libxcb-ewmh-dev libxcb1-dev qttools5-dev git libdbusmenu-qt5-dev -y
+# echo 'ckb-next'
+# git clone https://github.com/ckb-next/ckb-next.git
+# cd ckb-next
+# source quickinstall

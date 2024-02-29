@@ -86,6 +86,11 @@ sudo snap install postman
 echo '----- installing jq -----'
 sudo apt-get install jq
 
+echo '----- installing sounder switchers -----'
+sudo apt-add-repository ppa:yktooo/ppa
+sudo apt update
+sudo apt install indicator-sound-switcher
+
 echo '----- installing zsh -----'
 sudo apt-get install zsh -y
 sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
